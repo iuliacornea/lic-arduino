@@ -13,8 +13,9 @@ int AIR_TEMPERATURE = -1;
 int PHOTORESISTANCE = -1;
 
 String USER = "iulia.cornea5@gmail.com";
-String SOIL_MOISTURE_TAG = "\"soilMoisture\": ";
+String SOIL_MOISTURE_TAG = "\"soilMoisture\":";
 String CONFIGS_SEPARATOR = ",";
+String CONFIGS_END_CHAR = "}";
 
 void setup() {
   Serial.begin(115200); //initialize serial monitor
@@ -59,8 +60,13 @@ void readConfigs() {
   if (startIndexSoilMoisture != -1) {
     startIndexSoilMoisture = startIndexSoilMoisture + SOIL_MOISTURE_TAG.length();
     int endIndexSoilMoisture = input.indexOf(CONFIGS_SEPARATOR, startIndexSoilMoisture);
-    String soilMoistureThresholdString = input.substring(startIndexSoilMoisture, endIndexSoilMoisture);
-    SOIL_MOISTURE_THRESHOLD = soilMoistureThresholdString.toInt();
+    if (endIndexSoilMoisture == -1) {
+      endIndexSoilMoisture = input.indexOf(CONFIGS_END_CHAR, startIndexSoilMoisture);
+    }
+    if (endIndexSoilMoisture != -1) {
+      String soilMoistureThresholdString = input.substring(startIndexSoilMoisture, endIndexSoilMoisture);
+      SOIL_MOISTURE_THRESHOLD = soilMoistureThresholdString.toInt();
+    }
   }
 }
 
