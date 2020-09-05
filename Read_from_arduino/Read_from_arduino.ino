@@ -12,7 +12,8 @@ int AIR_HUMIDITY = -1;
 int AIR_TEMPERATURE = -1;
 int PHOTORESISTANCE = -1;
 
-String USER = "iulia.cornea5@gmail.com";
+String USER_ID = "bfd8e2c7-ed21-459a-af8e-a5a3128fb390";
+String GARDENER_ID = "9d9a01d3-92a8-4148-a7d3-92ef1e9fd29e";
 String SOIL_MOISTURE_TAG = "\"soilMoisture\":";
 String CONFIGS_SEPARATOR = ",";
 String CONFIGS_END_CHAR = "}";
@@ -47,7 +48,7 @@ void printReadings() {
   String soilMoisture = String(SOIL_MOISTURE);
   String photoresistance = String(PHOTORESISTANCE);
 
-  String readingsJSON = "{\"user\": \"" + USER + "\", \"airTemperature\": " + airTemperature + ", \"airHumidity\": " + airHumidity + ", \"soilMoisture\": " + soilMoisture + ", \"photoresistance\": " + photoresistance + "}";
+  String readingsJSON = "{\"userId\": \"" + USER_ID +"\", \"gardenerId\": \"" + GARDENER_ID + "\" , \"airTemperature\": " + airTemperature + ", \"airHumidity\": " + airHumidity + ", \"soilMoisture\": " + soilMoisture + ", \"lightIntensity\": " + photoresistance + "}";
   Serial.println(readingsJSON);
 }
 
