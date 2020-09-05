@@ -3,9 +3,9 @@
 
 const char* ssid = "Martin router king";
 const char* password = "zacuscabuna";
-String host = "b33227b1-f656-4710-9e7d-a2d658015935.mock.pstmn.io";
-const int httpPort = 80;
-String url = "/stats";
+String host = "192.168.0.106";
+const int httpPort = 8080;
+String url = "/api/greenhouse/stats";
 
 void setup()
 {
@@ -18,6 +18,8 @@ void setup()
   {
     delay(500);
   }
+//  Serial.print("Connected to ");
+//  Serial.println(ssid);
 }
 
 void loop()
@@ -33,6 +35,9 @@ void loop()
   {
     return;
   }
+
+//  Serial.print("Connected to ");
+//  Serial.println(host);
 
   String address = "http://" + host + url;
 
